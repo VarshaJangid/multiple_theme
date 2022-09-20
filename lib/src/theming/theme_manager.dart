@@ -24,6 +24,7 @@ class ThemeNotifier with ChangeNotifier {
     });
   }
 
+  // Dark Theme
   final darkTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.black),
@@ -35,9 +36,10 @@ class ThemeNotifier with ChangeNotifier {
     accentColor: Colors.white,
     accentIconTheme: const IconThemeData(color: Colors.black),
     dividerColor: Colors.black12,
-    iconTheme: const IconThemeData(color: Colors.green),
+    iconTheme: const IconThemeData(color: Colors.white),
   );
 
+  // Green Theme
   final greenTheme = ThemeData(
     scaffoldBackgroundColor: Colors.green.shade50,
     textButtonTheme: TextButtonThemeData(
@@ -47,9 +49,10 @@ class ThemeNotifier with ChangeNotifier {
     backgroundColor: Colors.green,
     accentIconTheme: const IconThemeData(color: Colors.black),
     dividerColor: Colors.black12,
-    iconTheme: const IconThemeData(color: Colors.white),
+    iconTheme: const IconThemeData(color: Colors.green),
   );
 
+  // Light Theme
   final lightTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.blue),
@@ -64,6 +67,7 @@ class ThemeNotifier with ChangeNotifier {
     dividerColor: Colors.white54,
   );
 
+  // Red Theme
   final redTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.red),
