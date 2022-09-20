@@ -1,7 +1,7 @@
-import 'package:multiple_theme/theming/theme_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
+import '/theming/theme_manager.dart';
 import '/screen/main_page.dart';
 import '/screen/splash.dart';
 

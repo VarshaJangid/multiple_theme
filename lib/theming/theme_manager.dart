@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../services/storage_manager.dart';
+import '/services/storage_manager.dart';
 
 class ThemeNotifier with ChangeNotifier {
   ThemeData _themeData = ThemeData();
@@ -24,7 +24,6 @@ class ThemeNotifier with ChangeNotifier {
     });
   }
 
-  // Dark Theme
   final darkTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.black),
@@ -39,7 +38,6 @@ class ThemeNotifier with ChangeNotifier {
     iconTheme: const IconThemeData(color: Colors.white),
   );
 
-  // Green Theme
   final greenTheme = ThemeData(
     scaffoldBackgroundColor: Colors.green.shade50,
     textButtonTheme: TextButtonThemeData(
@@ -52,7 +50,6 @@ class ThemeNotifier with ChangeNotifier {
     iconTheme: const IconThemeData(color: Colors.green),
   );
 
-  // Light Theme
   final lightTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.blue),
@@ -67,7 +64,6 @@ class ThemeNotifier with ChangeNotifier {
     dividerColor: Colors.white54,
   );
 
-  // Red Theme
   final redTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.red),
