@@ -33,11 +33,6 @@ dependencies:
     sdk: flutter
   shared_preferences:
   provider:
-  dropdownfield:
-  fluttertoast:
-  flutter_colorpicker:
-  flutter_material_color_picker:
-  day_night_switch:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
