@@ -102,7 +102,7 @@ class ThemeNotifier with ChangeNotifier {
 
   void setGreenMode() async {
     _themeData = greenTheme;
-    StorageManager.saveData('themeMode', 'yellow');
+    StorageManager.saveData('themeMode', 'green');
     notifyListeners();
   }
 }
