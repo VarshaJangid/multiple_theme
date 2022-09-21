@@ -26,11 +26,21 @@ class ThemeNotifier with ChangeNotifier {
 
   final darkTheme = ThemeData(
     textTheme: const TextTheme(
+      headline2: TextStyle(
+        fontSize: 16,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
       button: TextStyle(color: Colors.white, fontSize: 18),
       bodyText1: TextStyle(
         color: Colors.white,
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: FontWeight.normal,
+      ),
+      headline3: TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -47,10 +57,21 @@ class ThemeNotifier with ChangeNotifier {
   );
 
   final greenTheme = ThemeData(
+    dialogBackgroundColor: Colors.green,
     textTheme: const TextTheme(
+      headline3: TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
+      ),
+      headline2: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ),
       bodyText1: TextStyle(
         color: Colors.black,
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: FontWeight.normal,
       ),
       button: TextStyle(color: Colors.white, fontSize: 18),
@@ -67,33 +88,53 @@ class ThemeNotifier with ChangeNotifier {
   );
 
   final lightTheme = ThemeData(
+    dialogBackgroundColor: Colors.blue,
     textTheme: const TextTheme(
-      button: TextStyle(color: Colors.white, fontSize: 18),
+      headline3: TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
+      ),
+      headline2: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
       bodyText1: TextStyle(
         color: Colors.black,
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: FontWeight.normal,
       ),
+      button: TextStyle(color: Colors.white, fontSize: 18),
     ),
+    scaffoldBackgroundColor: Colors.blue.shade50,
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.blue),
     ),
     primarySwatch: Colors.blue,
-    primaryColor: Colors.white,
-    brightness: Brightness.light,
-    backgroundColor: const Color(0xFFE5E5E5),
-    accentColor: Colors.black,
-    accentIconTheme: const IconThemeData(color: Colors.white),
-    iconTheme: const IconThemeData(color: Colors.black),
-    dividerColor: Colors.white54,
+    backgroundColor: Colors.blue,
+    accentIconTheme: const IconThemeData(color: Colors.black),
+    dividerColor: Colors.black12,
+    iconTheme: const IconThemeData(color: Colors.blue),
   );
 
   final redTheme = ThemeData(
+    dialogBackgroundColor: Colors.red,
     textTheme: const TextTheme(
+      headline3: TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
+      ),
+      headline2: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
       button: TextStyle(color: Colors.white, fontSize: 18),
       bodyText1: TextStyle(
         color: Colors.black,
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: FontWeight.normal,
       ),
     ),

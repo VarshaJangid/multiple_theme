@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeNotifier>(
       builder: (context, theme, child) => MaterialApp(
         theme: theme.getTheme(),
-        title: 'Multiple Theme Demo',
-        home: const LogoApp(),
+        title: 'Multiple Theme',
+        home: const SplashScreen(),
         routes: <String, WidgetBuilder>{
           '/first': (BuildContext context) => const MainPage(),
         },

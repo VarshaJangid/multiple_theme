@@ -1,64 +1,118 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import '/screen/game/game_page.dart';
 import '/theming/theme_manager.dart';
+import '/model/category_model.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainState();
+}
+
+class _MainState extends State<MainPage> {
+  List<CategoryModel> categoryList = [];
+
+  @override
+  initState() {
+    fetchCategories();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeNotifier>(
       builder: (context, theme, child) => Scaffold(
-        appBar: AppBar(
-          leading: const SizedBox.shrink(),
-          title: const Text('Multiple Theme'),
-          actions: [
-            PopupMenuButton<int>(
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 1,
-                  child: const Text('Light Theme'),
-                  onTap: () => theme.setLightMode(),
+        body: categoryList.isEmpty
+            ? const SizedBox.shrink()
+            : DefaultTabController(
+                length: categoryList.length,
+                child: NestedScrollView(
+                  headerSliverBuilder:
+                      (BuildContext context, bool innerBoxIsScrolled) {
+                    return [
+                      SliverAppBar(
+                        leading: const SizedBox.shrink(),
+                        centerTitle: false,
+                        actions: [
+                          PopupMenuButton<int>(
+                            color: Theme.of(context).dialogBackgroundColor,
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                value: 1,
+                                child: Text(
+                                  'Light Theme',
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                                onTap: () => theme.setLightMode(),
+                              ),
+                              PopupMenuItem(
+                                value: 2,
+                                child: Text(
+                                  "Dark Theme",
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                                onTap: () => theme.setDarkMode(),
+                              ),
+                              PopupMenuItem(
+                                value: 3,
+                                child: Text(
+                                  "Red Theme",
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                                onTap: () => theme.setRedMode(),
+                              ),
+                              PopupMenuItem(
+                                value: 45,
+                                child: Text(
+                                  "Green Theme",
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                                onTap: () => theme.setGreenMode(),
+                              ),
+                            ],
+                          ),
+                        ],
+                        title: const Text('Games'),
+                        pinned: true,
+                        floating: true,
+                        bottom: TabBar(
+                          isScrollable: true,
+                          tabs: categoryList.map((e) {
+                            return Tab(child: Text(e.name));
+                          }).toList(),
+                        ),
+                      ),
+                    ];
+                  },
+                  body: TabBarView(
+                    children: categoryList.map((categoryModel) {
+                      return GamePage(
+                        categoryId: categoryModel.id,
+                      );
+                    }).toList(),
+                  ),
                 ),
-                PopupMenuItem(
-                  value: 2,
-                  child: const Text("Dark Theme"),
-                  onTap: () => theme.setDarkMode(),
-                ),
-                PopupMenuItem(
-                  value: 3,
-                  child: const Text("Red Theme"),
-                  onTap: () => theme.setRedMode(),
-                ),
-                PopupMenuItem(
-                  value: 45,
-                  child: const Text("Green Theme"),
-                  onTap: () => theme.setGreenMode(),
-                ),
-              ],
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-            Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-            const SizedBox(height: 20),
-            const Icon(Icons.ac_unit, size: 50),
-            const SizedBox(height: 20),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Test Button",
-                style: Theme.of(context).textTheme.button,
               ),
-            ),
-          ],
-        ),
       ),
     );
+  }
+
+  fetchCategories() async {
+    categoryList = await categoryApi();
+    setState(() {});
+  }
+
+  Future<List<CategoryModel>> categoryApi() async {
+    http.Response response =
+        await http.get(Uri.parse("https://games.gamepix.com/categories"));
+    var responseJson = json.decode(response.body);
+    return (responseJson['data'] as List)
+        .map((p) => CategoryModel.fromJson(p))
+        .toList();
   }
 }

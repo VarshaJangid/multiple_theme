@@ -1,71 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-// class SplashPage extends StatefulWidget {
-//   const SplashPage({super.key});
-//
-//   @override
-//   State<SplashPage> createState() => _SplashState();
-// }
-//
-// class _SplashState extends State<SplashPage> {
-//   @override
-//   void initState() {
-//     moveToMain();
-//     super.initState();
-//   }
-//
-//   moveToMain() {
-//     Future.delayed(const Duration(seconds: 2),
-//         () => Navigator.of(context).pushNamed('/first'));
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold();
-//   }
-// }
-
-class AnimatedLogo extends AnimatedWidget {
-  const AnimatedLogo({
-    super.key,
-    required Animation<double> animation,
-  }) : super(listenable: animation);
-
-  static final _opacityTween = Tween<double>(begin: 0.1, end: 1);
-  static final _sizeTween = Tween<double>(begin: 0, end: 300);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final animation = listenable as Animation<double>;
-    return Scaffold(
-      body: Center(
-        child: Opacity(
-          opacity: _opacityTween.evaluate(animation),
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            height: _sizeTween.evaluate(animation),
-            width: _sizeTween.evaluate(animation),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/sofa.png"),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class LogoApp extends StatefulWidget {
-  const LogoApp({super.key});
-
-  @override
-  State<LogoApp> createState() => _LogoAppState();
-}
-
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
 
@@ -101,7 +45,39 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   }
 }
 
-class UsedInTutorialTextOnly extends _LogoAppState {
+class AnimatedLogo extends AnimatedWidget {
+  const AnimatedLogo({
+    super.key,
+    required Animation<double> animation,
+  }) : super(listenable: animation);
+
+  static final _opacityTween = Tween<double>(begin: 0.1, end: 1);
+  static final _sizeTween = Tween<double>(begin: 0, end: 300);
+
+  @override
+  Widget build(BuildContext context) {
+    final animation = listenable as Animation<double>;
+    return Scaffold(
+      body: Center(
+        child: Opacity(
+          opacity: _opacityTween.evaluate(animation),
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            height: _sizeTween.evaluate(animation),
+            width: _sizeTween.evaluate(animation),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/sofa.png"),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class UsedInTutorialTextOnly extends _SplashScreenState {
   UsedInTutorialTextOnly() {
     var animation, sizeAnimation, opacityAnimation, tween, colorTween;
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
