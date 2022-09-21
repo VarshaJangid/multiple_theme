@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, theme, child) => MaterialApp(
         theme: theme.getTheme(),
         title: 'Multiple Theme Demo',
-        home: const SplashPage(),
+        home: const LogoApp(),
         routes: <String, WidgetBuilder>{
           '/first': (BuildContext context) => const MainPage(),
         },

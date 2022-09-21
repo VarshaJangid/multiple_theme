@@ -25,6 +25,14 @@ class ThemeNotifier with ChangeNotifier {
   }
 
   final darkTheme = ThemeData(
+    textTheme: const TextTheme(
+      button: TextStyle(color: Colors.white, fontSize: 18),
+      bodyText1: TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.black),
     ),
@@ -39,6 +47,14 @@ class ThemeNotifier with ChangeNotifier {
   );
 
   final greenTheme = ThemeData(
+    textTheme: const TextTheme(
+      bodyText1: TextStyle(
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+      button: TextStyle(color: Colors.white, fontSize: 18),
+    ),
     scaffoldBackgroundColor: Colors.green.shade50,
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.green),
@@ -51,6 +67,14 @@ class ThemeNotifier with ChangeNotifier {
   );
 
   final lightTheme = ThemeData(
+    textTheme: const TextTheme(
+      button: TextStyle(color: Colors.white, fontSize: 18),
+      bodyText1: TextStyle(
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.blue),
     ),
@@ -65,6 +89,14 @@ class ThemeNotifier with ChangeNotifier {
   );
 
   final redTheme = ThemeData(
+    textTheme: const TextTheme(
+      button: TextStyle(color: Colors.white, fontSize: 18),
+      bodyText1: TextStyle(
+        color: Colors.black,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
+      ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(backgroundColor: Colors.red),
     ),
